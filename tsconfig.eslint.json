@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json", // Extend your main tsconfig
+  "compilerOptions": {
+    // You might need to add "types": ["node"] here if you use Node.js globals
+    // and they are not already in your main tsconfig.
+    "composite": true,
+    "tsBuildInfoFile": "node_modules/.tsbuildinfo/tsconfig.eslint.tsbuildinfo",
+    "noEmit": true, // ESLint just needs to parse, not emit
+    "allowJs": true, // Allow linting JS files if needed
+    "module": "Node16", // Or "ESNext", depending on your Vite config's module system
+    "moduleResolution": "Node16" // Or "Node", etc.
+  },
+  "include": [
+    "vite.config.ts",
+    ".eslintrc.cjs", // If your ESLint config is a CJS file and you want it linted
+    "eslint.config.js", // If you want to lint your eslint.config.js itself
+    "prettier.config.js" // If you have a Prettier config file
+    // Add any other root-level config files (e.g., playwirght.config.ts, storybook main.ts)
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+    // Ensure your application source files are NOT excluded if you want them linted by the main config
+  ]
+}
