@@ -17,7 +17,8 @@
     "jsx": "react-jsx", // or "react" if not using the new JSX transform
     "baseUrl": "./",
     "paths": {
-      "*": ["src/*"]
+      "*": ["src/*"],
+      "hooks/*": ["hooks/*"],
     }
   },
   "include": ["src", "types", "tsconfig.eslint.json"], // Adjust based on your project structure

@@ -1,20 +1,43 @@
-import { User } from 'api/users.types';
+import { SortBy, User } from 'api/users.types';
 
 interface Props {
+  changeSorting: (sort: SortBy) => void;
   deleteUser: (email: string) => void;
   users: User[];
   showColors: boolean;
 }
 
-export function UserList({ deleteUser, users, showColors }: Props) {
+export function UserList({ changeSorting, deleteUser, users, showColors }: Props) {
+  console.log('🚀 ~ UserList ~ users:', users);
   return (
     <table>
       <thead>
         <tr>
-          <th>Profile</th>
-          <th>Name</th>
-          <th>Lastname</th>
-          <th>Country</th>
+          <th>Photo</th>
+          <th
+            className="pointer"
+            onClick={() => {
+              changeSorting(SortBy.NAME);
+            }}
+          >
+            Name
+          </th>
+          <th
+            className="pointer"
+            onClick={() => {
+              changeSorting(SortBy.LASTNAME);
+            }}
+          >
+            Lastname
+          </th>
+          <th
+            className="pointer"
+            onClick={() => {
+              changeSorting(SortBy.COUNTRY);
+            }}
+          >
+            Country
+          </th>
           <th>Actions</th>
         </tr>
       </thead>
