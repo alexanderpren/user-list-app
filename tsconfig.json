@@ -21,6 +21,6 @@
       "hooks/*": ["hooks/*"],
     }
   },
-  "include": ["src", "types", "tsconfig.eslint.json"], // Adjust based on your project structure
+  "include": ["src", "types", "tsconfig.eslint.json", "jest.config.js"], // Adjust based on your project structure
   "exclude": ["node_modules", "build", "dist"]
 }

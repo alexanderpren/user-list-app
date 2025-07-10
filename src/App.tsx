@@ -1,11 +1,11 @@
 import './App.css';
-import Form from './components/Form';
+import UserPage from './components/UserPage';
 
 function App() {
   // This is the main App component that renders the Form component
   return (
     <>
-      <Form />
+      <UserPage />
     </>
   );
 }

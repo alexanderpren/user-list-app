@@ -3,9 +3,9 @@ import { useState, useEffect } from 'react';
  *
  * @param value Value to disable(debounce)
  * @param delay miliseconds time
- * @returns
+ * @returns debouncedValue
  */
-export function useDebounce<T>(value: T, delay: number) {
+export function useDebounce<T>(value: T, delay: number = 500) {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
   useEffect(() => {
     const handler = setTimeout(() => {

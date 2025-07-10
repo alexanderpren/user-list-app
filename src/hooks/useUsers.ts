@@ -1,20 +1,40 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { SortBy, User } from 'api/users.types';
+import { ApiResults, SortBy, User } from 'api/users.types';
 
 const URL = 'https://randomuser.me/api/';
 
 export const useUsers = (filterCountry: string, sorting: SortBy) => {
   const [users, setUsers] = useState<User[]>([]);
   const originalUsersArray = useRef<User[]>([]);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
-    fetch(`${URL}?results=100`)
-      .then((res) => res.json())
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+
+    const newController = new AbortController();
+    abortControllerRef.current = newController;
+    fetch(`${URL}?results=100`, { signal: newController.signal })
+      .then((res) => {
+        if (!res.ok) throw new Error('Network response was not ok');
+        return res.json() as Promise<ApiResults>;
+      })
       .then((res) => {
         setUsers(res.results);
         originalUsersArray.current = res.results;
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.name === 'AbortError') {
+          console.log('request aborted');
+        } else {
+          console.error(err);
+        }
+      });
+    return () => {
+      // Abort when component unmounts
+      newController.abort();
+    };
   }, []);
 
   const handleDelete = (email: string) => {

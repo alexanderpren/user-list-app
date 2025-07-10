@@ -14,7 +14,8 @@
     "vite.config.ts",
     ".eslintrc.cjs", // If your ESLint config is a CJS file and you want it linted
     "eslint.config.js", // If you want to lint your eslint.config.js itself
-    "prettier.config.js" // If you have a Prettier config file
+    "prettier.config.js", // If you have a Prettier config file
+    "jest.setup.ts"
     // Add any other root-level config files (e.g., playwirght.config.ts, storybook main.ts)
   ],
   "exclude": [

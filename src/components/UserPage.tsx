@@ -1,11 +1,11 @@
 import { SortBy } from 'api/users.types';
 import { useState } from 'react';
-import { UserList } from './UserList';
-import styles from './Form.module.css';
+import { UsersTable } from './UsersTable';
+import styles from './UserPage.module.css';
 import { useDebounce } from '../hooks/useDebounce';
 import { useUsers } from '../hooks/useUsers';
 
-const Form = () => {
+const UserPage = () => {
   const [showColors, setShowColors] = useState<boolean>(false);
   const [sorting, setSorting] = useState<SortBy>(SortBy.NONE);
   const [filter, setFilter] = useState('');
@@ -40,7 +40,7 @@ const Form = () => {
           onChange={(e) => setFilter(e.target.value)}
         ></input>
       </header>
-      <UserList
+      <UsersTable
         changeSorting={setSorting}
         deleteUser={handleDelete}
         users={sortedUsers}
@@ -50,4 +50,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default UserPage;

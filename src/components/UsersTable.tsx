@@ -1,4 +1,5 @@
 import { SortBy, User } from 'api/users.types';
+import { MdOutlineDelete } from 'react-icons/md';
 
 interface Props {
   changeSorting: (sort: SortBy) => void;
@@ -7,8 +8,7 @@ interface Props {
   showColors: boolean;
 }
 
-export function UserList({ changeSorting, deleteUser, users, showColors }: Props) {
-  console.log('🚀 ~ UserList ~ users:', users);
+export function UsersTable({ changeSorting, deleteUser, users, showColors }: Props) {
   return (
     <table>
       <thead>
@@ -60,7 +60,7 @@ export function UserList({ changeSorting, deleteUser, users, showColors }: Props
                     deleteUser(user.email);
                   }}
                 >
-                  Delete User
+                  <MdOutlineDelete />
                 </button>
               </td>
             </tr>
