@@ -5,10 +5,13 @@ const URL = 'https://randomuser.me/api/';
 
 export const useUsers = (filterCountry: string, sorting: SortBy) => {
   const [users, setUsers] = useState<User[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const originalUsersArray = useRef<User[]>([]);
   const abortControllerRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
+    setIsLoading(true);
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -30,6 +33,9 @@ export const useUsers = (filterCountry: string, sorting: SortBy) => {
         } else {
           console.error(err);
         }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
     return () => {
       // Abort when component unmounts
@@ -68,5 +74,5 @@ export const useUsers = (filterCountry: string, sorting: SortBy) => {
     );
   }, [filteredUsers, sorting]);
 
-  return { sortedUsers, handleDelete, handleReset };
+  return { sortedUsers, handleDelete, handleReset, isLoading };
 };

@@ -11,7 +11,7 @@ const UserPage = () => {
   const [filter, setFilter] = useState('');
   const debouncedFilter = useDebounce(filter, 300);
 
-  const { sortedUsers, handleDelete, handleReset } = useUsers(debouncedFilter, sorting);
+  const { sortedUsers, handleDelete, handleReset, isLoading } = useUsers(debouncedFilter, sorting);
 
   const toggleSortByCountry = () => {
     setSorting((prev) => (prev === SortBy.COUNTRY ? SortBy.NONE : SortBy.COUNTRY));
@@ -45,6 +45,7 @@ const UserPage = () => {
         deleteUser={handleDelete}
         users={sortedUsers}
         showColors={showColors}
+        isLoading={isLoading}
       />
     </div>
   );

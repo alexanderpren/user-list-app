@@ -1,5 +1,7 @@
 # Buscador con React y Typescript
 
+Para trabajar con JEST, REACT y Typescript necesito jest, ts-jest, @types/jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom y ts-node
+npm i -D jest ts-jest @types/jest @testing-library/react @testing-library/jest-dom jest-environment-jsdom ts-node  
 Prueba técnica con TypeScript y React
 
 El objetivo de esta prueba técnica es crear una aplicación similar a la que se proporciona en este enlace: <https://midu-react-11.surge.sh/>. Para lograr esto, debe usar la API proporcionada por <https://randomuser.me/>.

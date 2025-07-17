@@ -10,17 +10,26 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    /*Bundler Mode*/
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx", // or "react" if not using the new JSX transform
+    "types": [
+      "@testing-library/jest-dom",
+      "@testing-library/react",
+      "@testing-library/user-event",
+      "jest",
+      "node"
+    ],
     "baseUrl": "./",
     "paths": {
       "*": ["src/*"],
-      "hooks/*": ["hooks/*"],
+      "hooks/*": ["hooks/*"]
     }
   },
-  "include": ["src", "types", "tsconfig.eslint.json", "jest.config.js"], // Adjust based on your project structure
+  "include": ["src", "types", "tsconfig.eslint.json", "jest.config.ts", "jest.config.ts"], // Adjust based on your project structure
   "exclude": ["node_modules", "build", "dist"]
 }

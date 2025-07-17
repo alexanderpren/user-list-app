@@ -1,0 +1,46 @@
+// _skeleton.scss
+
+// Definimos la animación de keyframes para el efecto de barrido
+@keyframes loading-bar {
+  0% {
+    background-position: -200px 0; // Inicia el gradiente fuera de la vista
+  }
+  100% {
+    background-position: 200px 0; // Mueve el gradiente a través del elemento
+  }
+}
+
+// Estilos base para el contenedor del esqueleto
+.skeleton-placeholder {
+  background-color: #f0f0f0; // Color base del esqueleto
+  border-radius: 4px;
+  overflow: hidden; // Asegura que el gradiente no se desborde
+
+  // Aplicamos la animación
+  animation: loading-bar 1.5s ease-in-out infinite; // Duración, easing, repetición
+
+  // Definimos el gradiente para el efecto de barrido
+  background-image: linear-gradient(
+    to right,
+    #f0f0f0 0%,
+    // Color base
+    #e0e0e0 20%,
+    // Color más claro para el "brillo"
+    #f0f0f0 40% // Vuelve al color base
+  );
+  background-size: 200px 100%; // Tamaño del gradiente (más ancho que el elemento)
+  background-repeat: no-repeat;
+}
+
+// Puedes hacer una ligera variación en la altura si quieres
+.skeleton-placeholder--short {
+  height: 16px;
+}
+
+.skeleton-placeholder--medium {
+  height: 20px;
+}
+
+.skeleton-placeholder--long {
+  height: 24px;
+}
